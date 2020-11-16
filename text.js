@@ -30,6 +30,19 @@ function runLoops() {
     // "for-loop", "while-loop", or "do-while-loop"
     var selectedLoop = $("input[name=loop-type]:checked").val();
 
+    switch (selectedLoop)
+    {
+        case "for-loop":
+            runForLoop();
+            break;
+        case "while-loop":
+            runWhileLoop();
+            break;
+        case "do-while-loop":
+            runDoWhileLoop();
+            break;
+    }
+
     /*
         Depending on which loop was selected,
         call the appropriate function.
@@ -53,6 +66,18 @@ function runWhileLoop() {
     var number = parseInt($("#myNumber").val());
     var output = "";
 
+    var whileLoop = 0;
+
+    while (whileLoop <= number - 1)
+    {
+        var startingPoint = 65;
+        if (startingPoint <= 90)
+        {
+            output += String.fromCharCode(startingPoint + whileLoop);
+        }
+        whileLoop++;
+    }
+
     /*
         Use a while loop to concatenate the letter A
         "number" times to the string "output". For example,
@@ -60,7 +85,6 @@ function runWhileLoop() {
 
         (Or for a challenge, concatenate the first "number" letters of the alphabet!)
     */
-
 
     $("#while-result").text(output);
 }
@@ -75,6 +99,11 @@ function runForLoop() {
         into the variable "sum".
     */
 
+    for (i = 0; i <= number; i++)
+    {
+        sum += i;
+    }
+
     $("#for-result").text(sum);
 }
 
@@ -88,6 +117,13 @@ function runDoWhileLoop() {
         "number" to the string "output". For example, if "number"
         is 5, then output should be "12345".
     */
+    var doWhileLoop = 0;
+
+    do
+    {
+        output +=  doWhileLoop + 1;
+        doWhileLoop++;
+    } while (doWhileLoop <= number - 1);
 
 
     $("#do-while-result").text(output);
